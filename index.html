@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Purple Tulip Garden 💜</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;height:100vh;overflow:hidden;
+  background:linear-gradient(#12051d,#42145c);
+  display:flex;align-items:flex-end;justify-content:center;
+  font-family:Arial,sans-serif
+}
+
+/* 💡 STRING LIGHTS */
+.string-lights{
+  position:absolute;top:5px;left:0;width:100%;height:80px;
+  display:flex;justify-content:space-around;padding:0 8px
+}
+.wire{
+  position:absolute;top:18px;left:0;width:100%;height:3px;
+  background:#171717
+}
+.bulb{
+  position:relative;z-index:2;margin-top:15px;
+  width:15px;height:23px;border-radius:50%;
+  animation:twinkle 1.2s infinite alternate
+}
+.bulb:before{
+  content:"";position:absolute;top:-5px;left:4px;
+  width:7px;height:6px;background:#222
+}
+.bulb:after{
+  content:"";position:absolute;inset:-12px;
+  border-radius:50%;background:inherit;
+  filter:blur(12px);opacity:.7;z-index:-1
+}
+.red{background:#ff304f}
+.yellow{background:#ffe34d;animation-delay:.25s}
+.blue{background:#39a9ff;animation-delay:.5s}
+.green{background:#48e878;animation-delay:.75s}
+.pink{background:#ff55d9;animation-delay:1s}
+.orange{background:#ff9638;animation-delay:1.25s}
+.purple{background:#b65cff;animation-delay:.4s}
+.cyan{background:#35eee5;animation-delay:.9s}
+
+@keyframes twinkle{
+  0%{opacity:.3;transform:scale(.85)}
+  50%{opacity:.8}
+  100%{opacity:1;transform:scale(1.15);filter:brightness(1.8)}
+}
+
+/* 🎈 BALLOONS */
+.balloon{
+  position:absolute;width:45px;height:55px;
+  border-radius:50%;
+  animation:balloonFloat 3s ease-in-out infinite
+}
+.balloon:after{
+  content:"";position:absolute;top:52px;left:50%;
+  width:1px;height:100px;background:#ddd
+}
+.bred{background:#ff405c;left:7%;top:95px}
+.byellow{background:#ffd83d;left:19%;top:70px;animation-delay:.5s}
+.bblue{background:#45aaff;right:19%;top:80px;animation-delay:1s}
+.bpink{background:#ff65c9;right:7%;top:105px;animation-delay:1.5s}
+.borange{background:#ff8b32;left:48%;top:75px;animation-delay:.8s}
+
+@keyframes balloonFloat{
+  0%,100%{transform:translateY(0) rotate(-5deg)}
+  50%{transform:translateY(-18px) rotate(5deg)}
+}
+
+/* ✨ FALLING STARS */
+.star{
+  position:absolute;top:-20px;color:white;font-size:16px;
+  text-shadow:0 0 10px white;
+  animation:fall linear infinite
+}
+.s1{left:10%;animation-duration:5s}
+.s2{left:30%;animation-duration:7s}
+.s3{left:50%;animation-duration:4s}
+.s4{left:70%;animation-duration:6s}
+.s5{left:90%;animation-duration:8s}
+
+@keyframes fall{
+  from{transform:translateY(-20px) rotate(0);opacity:0}
+  20%{opacity:1}
+  to{transform:translateY(110vh) rotate(360deg);opacity:0}
+}
+
+/* 💌 SMALL ENVELOPE */
+.envelope{
+  position:absolute;
+  top:145px;
+  left:50%;
+  transform:translateX(-50%);
+  width:70px;
+  height:48px;
+  background:#f8d9ff;
+  border-radius:5px;
+  cursor:pointer;
+  z-index:10;
+  box-shadow:0 0 15px #d77cff;
+  animation:envelopeFloat 2s ease-in-out infinite;
+}
+
+.envelope:before{
+  content:"";
+  position:absolute;
+  top:0;left:0;
+  border-left:35px solid transparent;
+  border-right:35px solid transparent;
+  border-top:25px solid #dca2ef;
+}
+
+.envelope:after{
+  content:"💜";
+  position:absolute;
+  left:25px;
+  top:14px;
+  font-size:18px;
+}
+
+@keyframes envelopeFloat{
+  0%,100%{transform:translateX(-50%) translateY(0)}
+  50%{transform:translateX(-50%) translateY(-7px)}
+}
+
+/* 💌 LETTER BOX */
+.letterBox{
+  display:none;
+  position:absolute;
+  top:200px;
+  left:50%;
+  transform:translateX(-50%);
+  width:220px;
+  padding:18px;
+  background:#fff5ff;
+  color:#542060;
+  border-radius:12px;
+  text-align:center;
+  z-index:20;
+  box-shadow:0 0 25px #d77cff;
+  animation:pop .4s ease
+}
+
+.letterBox h3{
+  margin:0 0 8px;
+  color:#8b35b5
+}
+
+.letterBox p{
+  margin:0 0 12px;
+  font-size:13px;
+  line-height:1.5
+}
+
+.close{
+  border:0;
+  background:#8b35b5;
+  color:white;
+  padding:6px 15px;
+  border-radius:15px;
+  cursor:pointer
+}
+
+@keyframes pop{
+  from{transform:translateX(-50%) scale(.5);opacity:0}
+  to{transform:translateX(-50%) scale(1);opacity:1}
+}
+
+/* 🌱 LONG SWAYING GRASS */
+.grass{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:105px;
+  z-index:4
+}
+
+.blade{
+  position:absolute;
+  bottom:0;
+  width:5px;
+  background:linear-gradient(to top,#245c32,#75c45c);
+  border-radius:100% 0 0 0;
+  transform-origin:bottom;
+  animation:sway 2.5s ease-in-out infinite
+}
+
+.g1{left:2%;height:65px}
+.g2{left:7%;height:90px;animation-delay:.3s}
+.g3{left:13%;height:55px;animation-delay:.8s}
+.g4{left:21%;height:82px;animation-delay:.1s}
+.g5{left:28%;height:65px;animation-delay:.6s}
+.g6{left:36%;height:95px;animation-delay:1s}
+.g7{left:44%;height:70px;animation-delay:.4s}
+.g8{left:52%;height:90px;animation-delay:.9s}
+.g9{left:60%;height:60px;animation-delay:.2s}
+.g10{left:68%;height:85px;animation-delay:.7s}
+.g11{left:76%;height:65px;animation-delay:1.1s}
+.g12{left:84%;height:95px;animation-delay:.5s}
+.g13{left:91%;height:70px;animation-delay:.9s}
+.g14{left:97%;height:85px;animation-delay:.2s}
+
+@keyframes sway{
+  0%,100%{transform:rotate(-7deg)}
+  50%{transform:rotate(9deg)}
+}
+
+/* 🌷 TULIPS */
+.garden{
+  display:flex;gap:18px;
+  margin-bottom:30px;
+  position:relative;
+  z-index:5
+}
+
+.tulip{
+  width:55px;height:280px;
+  position:relative
+}
+
+.stem{
+  position:absolute;bottom:0;left:50%;
+  width:6px;height:0;
+  background:#4d9145;
+  border-radius:10px;
+  transform:translateX(-50%);
+  animation:grow 2s forwards
+}
+
+.leaf{
+  position:absolute;bottom:65px;
+  width:40px;height:18px;
+  background:#64a953;
+  border-radius:100% 0;
+  opacity:0;
+  animation:leaf .8s 1.4s forwards
+}
+
+.l{left:-2px;transform:rotate(-30deg)}
+.r{right:-2px;transform:scaleX(-1) rotate(-30deg)}
+
+.flower{
+  position:absolute;bottom:180px;left:50%;
+  width:50px;height:55px;
+  transform:translateX(-50%) scale(0);
+  opacity:0;
+  animation:bloom 1.2s 2s forwards
+}
+
+.petal{
+  position:absolute;bottom:0;
+  width:27px;height:48px;
+  background:linear-gradient(#df9aff,#7425aa);
+  border-radius:50% 50% 45% 45%;
+  box-shadow:0 0 12px #b85cff
+}
+
+.p1{left:0;transform:rotate(-25deg)}
+.p2{left:12px;z-index:2}
+.p3{right:0;transform:rotate(25deg)}
+
+@keyframes grow{to{height:180px}}
+@keyframes leaf{to{opacity:1}}
+@keyframes bloom{
+  0%{opacity:0;transform:translateX(-50%) scale(0)}
+  60%{opacity:1;transform:translateX(-50%) scale(1.15)}
+  100%{opacity:1;transform:translateX(-50%) scale(1)}
+}
+
+@media(max-width:500px){
+  .garden{gap:7px}
+  .tulip{width:48px}
+  .balloon{transform:scale(.8)}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 💡 LIGHTS -->
+<div class="string-lights">
+  <div class="wire"></div>
+  <span class="bulb red"></span>
+  <span class="bulb yellow"></span>
+  <span class="bulb blue"></span>
+  <span class="bulb green"></span>
+  <span class="bulb pink"></span>
+  <span class="bulb orange"></span>
+  <span class="bulb purple"></span>
+  <span class="bulb cyan"></span>
+  <span class="bulb red"></span>
+  <span class="bulb yellow"></span>
+  <span class="bulb blue"></span>
+  <span class="bulb pink"></span>
+</div>
+
+<!-- 🎈 BALLOONS -->
+<div class="balloon bred"></div>
+<div class="balloon byellow"></div>
+<div class="balloon bblue"></div>
+<div class="balloon bpink"></div>
+
+<!-- ✨ STARS -->
+<div class="star s1">✦</div>
+<div class="star s2">✧</div>
+<div class="star s3">✦</div>
+<div class="star s4">✧</div>
+<div class="star s5">✦</div>
+
+<!-- 💌 ENVELOPE -->
+<div class="envelope" onclick="openLetter()"></div>
+
+<!-- 💌 SMALL LETTER -->
+<div class="letterBox" id="letter">
+  <h3>💜TO BABI💜</h3>
+  <p>
+    Hi to my babi if ever you're reading this na, i hope you're smiling🫰<br>
+    I MISS YOU SO MUCH AS ALWAYS PO BABI☹️<br>
+    Take care always ka jan po ahh wag papagutom and wag papahirapan masyado sarili kakapuyat ah🥹<br>
+    Love² always🫂❤️!
+  </p>
+  <button class="close" onclick="closeLetter()">Close</button>
+</div>
+
+<!-- 🌱 GRASS -->
+<div class="grass">
+  <i class="blade g1"></i>
+  <i class="blade g2"></i>
+  <i class="blade g3"></i>
+  <i class="blade g4"></i>
+  <i class="blade g5"></i>
+  <i class="blade g6"></i>
+  <i class="blade g7"></i>
+  <i class="blade g8"></i>
+  <i class="blade g9"></i>
+  <i class="blade g10"></i>
+  <i class="blade g11"></i>
+  <i class="blade g12"></i>
+  <i class="blade g13"></i>
+  <i class="blade g14"></i>
+</div>
+
+<!-- 🌷 5 TULIPS -->
+<div class="garden">
+
+  <div class="tulip">
+    <div class="stem"></div><div class="leaf l"></div>
+    <div class="flower">
+      <i class="petal p1"></i><i class="petal p2"></i><i class="petal p3"></i>
+    </div>
+  </div>
+
+  <div class="tulip">
+    <div class="stem"></div><div class="leaf r"></div>
+    <div class="flower">
+      <i class="petal p1"></i><i class="petal p2"></i><i class="petal p3"></i>
+    </div>
+  </div>
+
+  <div class="tulip">
+    <div class="stem"></div><div class="leaf l"></div>
+    <div class="flower">
+      <i class="petal p1"></i><i class="petal p2"></i><i class="petal p3"></i>
+    </div>
+  </div>
+
+  <div class="tulip">
+    <div class="stem"></div><div class="leaf r"></div>
+    <div class="flower">
+      <i class="petal p1"></i><i class="petal p2"></i><i class="petal p3"></i>
+    </div>
+  </div>
+
+  <div class="tulip">
+    <div class="stem"></div><div class="leaf l"></div>
+    <div class="flower">
+      <i class="petal p1"></i><i class="petal p2"></i><i class="petal p3"></i>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function openLetter(){
+  document.getElementById("letter").style.display="block";
+}
+
+function closeLetter(){
+  document.getElementById("letter").style.display="none";
+}
+</script>
+
+</body>
+</html>
